@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar con CSS Grid</title>
+   
+    <style>
+        /* Estilos básicos para la navbar */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            background-color: #343a40;
+            padding: 10px;
+            color: white;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        .navbar-links {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        .nav-link:hover {
+            color: #ffcc00;
+        }
+
+        .disabled {
+            color: gray;
+            pointer-events: none;
+        }
+
+        .navbar-toggle {
+            display: none;
+        }
+
+        /* Estilos para pantallas pequeñas */
+        @media (max-width: 768px) {
+            .navbar {
+                grid-template-columns: 1fr auto;
+            }
+
+            .navbar-links {
+                display: none;
+                flex-direction: column;
+                background-color: #343a40;
+                position: absolute;
+                top: 50px;
+                right: 10px;
+                width: 200px;
+            }
+
+            .navbar-links.active {
+                display: flex;
+            }
+
+            .navbar-toggle {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <img src="https://via.placeholder.com/30" alt="Logo" class="logo">
+            Navbar Prueba
+        </div>
+        <div class="navbar-links">
+            <a href="#" class="nav-link">Inicio</a>
+            <a href="#" class="nav-link">Características</a>
+            <a href="#" class="nav-link">Precios</a>
+            <a href="#" class="nav-link">Cosas</a>
+           
+        </div>
+        <div class="navbar-toggle">
+            <button id="toggle-button">☰</button>
+        </div>
+    </nav>
+
+    <!-- Enlace al archivo JS -->
+    <script>
+        document.getElementById('toggle-button').addEventListener('click', function() {
+            document.querySelector('.navbar-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
